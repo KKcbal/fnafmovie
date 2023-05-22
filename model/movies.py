@@ -119,11 +119,11 @@ def initMovies():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    u1 = Movie(DateID="", ftitle='Thomas Edison', commentary='100')
-    u2 = Movie(DateID="", ftitle='Nicholas Tesla', commentary='200')
-    u3 = Movie(DateID="", ftitle='Alexander Graham Bell', commentary='123')
-    u4 = Movie(DateID="", ftitle='Eli Whitney', commentary='432')
-    u5 = Movie(DateID="", ftitle='John Mortensen', commentary='340')
+    u1 = Movie(DateID="1", ftitle='Joker', commentary='I\'m the joker baby')
+    u2 = Movie(DateID="2", ftitle='fnaf', commentary='it was soo cool')
+    u3 = Movie(DateID="3", ftitle='Back to the Future', commentary='doc browno')
+    u4 = Movie(DateID="4", ftitle='BlacKkKlansman', commentary='adam driver your line was "keep driving asshole"')
+    u5 = Movie(DateID="5", ftitle='Willy\'s Wonderland', commentary='I love Nicholas Cage')
 
     movies = [u1, u2, u3, u4, u5]
 
