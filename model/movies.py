@@ -132,8 +132,8 @@ def initMovies():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    u1 = Movie(DateID="1", ftitle='Joker', commentary='I\'m the joker baby', likes=0)
-    u2 = Movie(DateID="2", ftitle='fnaf', commentary='it was soo cool', likes=0)
+    u1 = Movie(DateID="97812", ftitle='Joker', commentary='I\'m the joker baby', likes=0)
+    u2 = Movie(DateID="123", ftitle='fnaf', commentary='it was soo cool', likes=0)
     u3 = Movie(DateID="3", ftitle='Back to the Future', commentary='doc browno', likes=0)
     u4 = Movie(DateID="4", ftitle='BlacKkKlansman', commentary='adam driver your line was "keep driving asshole"', likes=0)
     u5 = Movie(DateID="5", ftitle='Willy\'s Wonderland', commentary='I love Nicholas Cage', likes=0)
