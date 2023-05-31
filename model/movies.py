@@ -27,13 +27,14 @@ class Movie(db.Model):
     _DateID = db.Column(db.Integer, unique=True)
     _ftitle = db.Column(db.String(255), unique=False, nullable=False)
     _commentary = db.Column(db.String, unique=False, nullable=False)
-
+    _likes = db.Column(db.Integer, unique=False, nullable=False)
 
     # constructor of a User object, initializes the instance variables within object (self)
-    def __init__(self, DateID, ftitle, commentary):
+    def __init__(self, DateID, ftitle, commentary, likes):
         self._DateID = DateID
         self._ftitle = ftitle    # variables with self prefix become part of the object, 
         self._commentary = commentary
+        self._likes = likes
 
     @property
     def DateID(self):
@@ -63,6 +64,15 @@ class Movie(db.Model):
     @commentary.setter
     def commentary(self, commentary):
         self._commentary = commentary
+        
+    @property
+    def likes(self):
+        return self._likes
+    
+    # a setter function, allows name to be updated after initial object creation
+    @likes.setter
+    def likes(self, likes):
+        self._likes = likes
     
     # output content using str(object) in human readable form, uses getter
     # output content using json dumps, this is ready for API response
@@ -85,14 +95,15 @@ class Movie(db.Model):
     # returns dictionary
     def read(self):
         return {
-            "id": self.DateID,
+            "DateID": self.DateID,
             "ftitle": self.ftitle,
-            "commentary": self.commentary
+            "commentary": self.commentary,
+            "likes": self.likes
         }
 
     # CRUD update: updates user name, password, phone
     # returns self
-    def update(self, DateID="", ftitle="", commentary=""):
+    def update(self, DateID="", ftitle="", commentary="", likes=""):
         """only updates values with length"""
         if len(DateID) > 0:
             self.DateID = DateID
@@ -100,6 +111,8 @@ class Movie(db.Model):
             self.ftitle = ftitle
         if len(commentary) > 0:
             self.commentary = commentary
+        if len(likes) > 0:
+            self.likes = likes
         db.session.commit()
         return self
 
@@ -119,11 +132,11 @@ def initMovies():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    u1 = Movie(DateID="1", ftitle='Joker', commentary='I\'m the joker baby')
-    u2 = Movie(DateID="2", ftitle='fnaf', commentary='it was soo cool')
-    u3 = Movie(DateID="3", ftitle='Back to the Future', commentary='doc browno')
-    u4 = Movie(DateID="4", ftitle='BlacKkKlansman', commentary='adam driver your line was "keep driving asshole"')
-    u5 = Movie(DateID="5", ftitle='Willy\'s Wonderland', commentary='I love Nicholas Cage')
+    u1 = Movie(DateID="1", ftitle='Joker', commentary='I\'m the joker baby', likes=0)
+    u2 = Movie(DateID="2", ftitle='fnaf', commentary='it was soo cool', likes=0)
+    u3 = Movie(DateID="3", ftitle='Back to the Future', commentary='doc browno', likes=0)
+    u4 = Movie(DateID="4", ftitle='BlacKkKlansman', commentary='adam driver your line was "keep driving asshole"', likes=0)
+    u5 = Movie(DateID="5", ftitle='Willy\'s Wonderland', commentary='I love Nicholas Cage', likes=0)
 
     movies = [u1, u2, u3, u4, u5]
 

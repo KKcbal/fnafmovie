@@ -28,11 +28,15 @@ class MovieAPI:
             commentary = body.get('commentary')
             if commentary is None or len(commentary) < 0:
                 return {'message': f'commentary is missing, or is less than 0 characters'}, 210
+            likes = body.get('likes')
+            if likes is None or len(likes) < 0:
+                return {'message': f'likes is missing, or is less than 0 characters'}, 210
 
             ''' #1: Key code block, setup USER OBJECT '''
             uo = Movie(DateID=DateID, 
                       ftitle=ftitle,
-                      commentary=commentary)
+                      commentary=commentary,
+                      likes=likes)
             
             ''' Additional garbage error checking '''
             # set password if provided
